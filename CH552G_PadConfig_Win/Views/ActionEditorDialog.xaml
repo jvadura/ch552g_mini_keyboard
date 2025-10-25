@@ -1,0 +1,109 @@
+<Window x:Class="CH552G_PadConfig_Win.Views.ActionEditorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Action Configuration"
+        Height="600" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Name="HeaderText" Text="Configure Action"
+                   FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- Configuration Panel -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Action Type -->
+                <TextBlock Text="Action Type:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <ComboBox Name="ActionTypeCombo" FontSize="13" Padding="5" Margin="0,0,0,15"
+                          SelectionChanged="ActionTypeCombo_SelectionChanged"/>
+
+                <!-- Modifiers -->
+                <TextBlock Text="Modifiers:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <StackPanel Name="ModifiersPanel" Orientation="Horizontal" Margin="0,0,0,15">
+                    <CheckBox Name="CtrlCheck" Content="Ctrl" Margin="0,0,15,0"/>
+                    <CheckBox Name="ShiftCheck" Content="Shift" Margin="0,0,15,0"/>
+                    <CheckBox Name="AltCheck" Content="Alt" Margin="0,0,15,0"/>
+                    <CheckBox Name="GuiCheck" Content="Win/Cmd" Margin="0,0,0,0"/>
+                </StackPanel>
+
+                <!-- Primary Value (context-sensitive) -->
+                <TextBlock Name="PrimaryLabel" Text="Key:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <ComboBox Name="PrimaryCombo" FontSize="13" Padding="5" Margin="0,0,0,15"
+                          Visibility="Collapsed"/>
+                <TextBox Name="PrimaryTextBox" FontSize="13" Padding="5" Margin="0,0,0,15"
+                         MaxLength="1" Visibility="Collapsed"/>
+
+                <!-- Secondary Value -->
+                <StackPanel Name="SecondaryPanel" Visibility="Collapsed" Margin="0,0,0,15">
+                    <TextBlock Name="SecondaryLabel" Text="Click Count:" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                    <TextBox Name="SecondaryTextBox" FontSize="13" Padding="5"/>
+                </StackPanel>
+
+                <!-- Hold Mode -->
+                <CheckBox Name="HoldCheck" Content="Hold while pressed (PTT/Drag mode)"
+                          Margin="0,0,0,15"/>
+
+                <!-- Colors -->
+                <GroupBox Header="LED Colors" Padding="10" Margin="0,0,0,15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Idle Color -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Idle:"
+                                   VerticalAlignment="Center" Margin="0,0,10,10"/>
+                        <Border Grid.Row="0" Grid.Column="1" Name="IdleColorPreview"
+                                Width="40" Height="40" BorderBrush="#FF666666"
+                                BorderThickness="1" CornerRadius="20" Margin="0,0,10,10"/>
+                        <Button Grid.Row="0" Grid.Column="2" Content="Select Color..."
+                                Click="SelectIdleColor_Click" Width="120"
+                                HorizontalAlignment="Left" Margin="0,0,0,10"/>
+
+                        <!-- Active Color -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Active:"
+                                   VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <Border Grid.Row="1" Grid.Column="1" Name="ActiveColorPreview"
+                                Width="40" Height="40" BorderBrush="#FF666666"
+                                BorderThickness="1" CornerRadius="20" Margin="0,0,10,0"/>
+                        <Button Grid.Row="1" Grid.Column="2" Content="Select Color..."
+                                Click="SelectActiveColor_Click" Width="120"
+                                HorizontalAlignment="Left"/>
+                    </Grid>
+                </GroupBox>
+
+                <!-- Preview -->
+                <GroupBox Header="Preview" Padding="10">
+                    <TextBlock Name="PreviewText" Text="None" FontStyle="Italic"
+                               TextWrapping="Wrap" FontSize="12"/>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+            <Button Content="OK" Width="100" Height="32" Margin="0,0,10,0"
+                    Click="OK_Click" IsDefault="True"
+                    Background="#FF0078D4" Foreground="White" BorderThickness="0"/>
+            <Button Content="Cancel" Width="100" Height="32"
+                    Click="Cancel_Click" IsCancel="True"
+                    Background="#FF5C5C5C" Foreground="White" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>

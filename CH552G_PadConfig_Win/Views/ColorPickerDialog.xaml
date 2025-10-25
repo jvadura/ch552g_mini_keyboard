@@ -1,0 +1,89 @@
+<Window x:Class="CH552G_PadConfig_Win.Views.ColorPickerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select LED Color"
+        Height="300" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Select Color from Palette"
+                   FontSize="16" FontWeight="Bold" Margin="0,0,0,15"/>
+
+        <!-- Color Palette Grid -->
+        <UniformGrid Grid.Row="1" Rows="2" Columns="4" Margin="0,0,0,15">
+            <Button Name="Color0" Click="ColorButton_Click" Tag="0" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="Black" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Off" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color1" Click="ColorButton_Click" Tag="1" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="#FFFF0000" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Red" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color2" Click="ColorButton_Click" Tag="2" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="#FF00FF00" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Green" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color3" Click="ColorButton_Click" Tag="3" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="#FF0000FF" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Blue" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color4" Click="ColorButton_Click" Tag="4" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="#FFFFFF00" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Yellow" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color5" Click="ColorButton_Click" Tag="5" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="#FF00FFFF" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Cyan" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color6" Click="ColorButton_Click" Tag="6" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="#FFFF00FF" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="Magenta" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Color7" Click="ColorButton_Click" Tag="7" Margin="5" Padding="10">
+                <StackPanel>
+                    <Border Width="60" Height="60" Background="White" BorderBrush="#FF666666" BorderThickness="1"/>
+                    <TextBlock Text="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+        </UniformGrid>
+
+        <!-- Selected Color Info -->
+        <TextBlock Grid.Row="2" Name="SelectedColorText"
+                   Text="Selected: Off (index 0)"
+                   HorizontalAlignment="Center"
+                   FontWeight="SemiBold" Margin="0,0,0,15"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="OK" Width="100" Height="32" Margin="0,0,10,0"
+                    Click="OK_Click" IsDefault="True"
+                    Background="#FF0078D4" Foreground="White" BorderThickness="0"/>
+            <Button Content="Cancel" Width="100" Height="32"
+                    Click="Cancel_Click" IsCancel="True"
+                    Background="#FF5C5C5C" Foreground="White" BorderThickness="0"/>
+        </StackPanel>
+    </Grid>
+</Window>
